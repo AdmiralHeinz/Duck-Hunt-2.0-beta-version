@@ -27,6 +27,7 @@ namespace Duck_Hunt_2._0
         public bool movingLeft = true;
         public bool movingUp = true;
         public bool isDuck = false;
+        public int shots;
 
 
         public void Spawn(Canvas canvas)
