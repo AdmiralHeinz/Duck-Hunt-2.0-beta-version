@@ -22,9 +22,10 @@ namespace Duck_Hunt_2._0
     {
         Duck duck = new Duck();
         Player player = new Player();
-
         System.Windows.Threading.DispatcherTimer gameTimer = new System.Windows.Threading.DispatcherTimer();
         int counter = 0;
+        double Shot_X;
+        double Shot_Y;
 
         public MainWindow()
         {
@@ -53,16 +54,21 @@ namespace Duck_Hunt_2._0
 
             if (player.MouseClicked())
             {
-                ///this.Title = Mouse.GetPosition(this).ToString();
-                ///Console.WriteLine(Mouse.GetPosition(this).ToString());
-                double Shot_X;
-                double Shot_Y;
-                Shot_X = Mouse.GetPosition(this).X;
-                Shot_Y = Mouse.GetPosition(this).Y;
-                Shot_X += 25;
-                Shot_Y += 25;
-                duck.Kill(Shot_X, Shot_Y, Canvas, counter);
+                if (duck.shots >= 3)
+                {
+                    MessageBox.Show("out of ammo");
+                    Canvas.Children.Remove(duck.duck);
+                    duck.isDuck = false;
 
+                }
+                else
+                {
+                    ///this.Title = Mouse.GetPosition(this).ToString();
+                    ///Console.WriteLine(Mouse.GetPosition(this).ToString());
+                    Shot_X = Mouse.GetPosition(this).X + 25;
+                    Shot_Y = Mouse.GetPosition(this).Y + 25;
+                    duck.Kill(Shot_X, Shot_Y, Canvas, counter);
+                }
             }
 
             //else { this.Title = "no click"; } /// debug crap
