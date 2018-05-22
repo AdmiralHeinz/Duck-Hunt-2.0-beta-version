@@ -117,13 +117,16 @@ namespace Duck_Hunt_2._0
 
         public void Kill(double Shot_x, double Shot_Y, Canvas canvas, int counter)
         {
-            if (Shot_x >= pos_x & Shot_x <= pos_x + 50)
+            if (Shot_x >= pos_x & Shot_x <= pos_x + 100 & Shot_Y >= pos_y & Shot_Y <= pos_y + 100)
             {
-                if (Shot_Y >= pos_y & Shot_Y <= pos_y + 50)
-                {
-                    canvas.Children.Remove(duck);
-                    isDuck = false;
-                }
+               canvas.Children.Remove(duck);
+               isDuck = false;
+                
+            }
+            else
+            {
+                shots += 1;
+                MessageBox.Show(shots.ToString());
             }
         }
 
