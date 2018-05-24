@@ -127,7 +127,7 @@ namespace Duck_Hunt_2._0
             else
             {
                 shots += 1;
-                MessageBox.Show(shots.ToString());
+                //MessageBox.Show(shots.ToString());
             }
         }
 
