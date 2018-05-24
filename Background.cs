@@ -19,6 +19,8 @@ namespace Duck_Hunt_2._0
     class Background
     {
         public Cursor crossHair;
+        public Rectangle bulletDisplay;
+        
         public Background(Canvas canvas)
         {
             FileStream fileStream;///set cursor
@@ -33,14 +35,16 @@ namespace Duck_Hunt_2._0
             BitmapImage bitmapBackground = new BitmapImage(new Uri("Background.png", UriKind.Relative));
             ImageBrush backgroundBrush = new ImageBrush(bitmapBackground);
             background.Fill = backgroundBrush;
-
             canvas.Children.Add(background);
-            canvas.UpdateLayout();
+            
+            bulletDisplay = new Rectangle();
+            bulletDisplay.Height = 50;
+            bulletDisplay.Width = 80;
+            Canvas.SetBottom(bulletDisplay, 10);
+            canvas.Children.Add(bulletDisplay);
 
-            //start music
-            ///MediaPlayer musicPlayer = new MediaPlayer();
-            //musicPlayer.Open(new Uri("tapperSong.mp3", UriKind.Relative));
-            //musicPlayer.Play();
+            
+            canvas.UpdateLayout();
 
         }
     }
