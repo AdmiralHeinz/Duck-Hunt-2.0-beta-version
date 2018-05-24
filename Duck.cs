@@ -158,18 +158,30 @@ namespace Duck_Hunt_2._0
             if (direction == 0)
             {
                 //duck.Fill = //duck facing NE
+                BitmapImage bitmapImage = new BitmapImage(new Uri("DuckLeft.png", UriKind.Relative));
+                ImageBrush img = new ImageBrush(bitmapImage);
+                duck.Fill = img;
             }
             else if (direction == 1)
             {
                 //duck.Fill = //duck facing NW
+                BitmapImage bitmapImage = new BitmapImage(new Uri("DuckRight.png", UriKind.Relative));
+                ImageBrush img = new ImageBrush(bitmapImage);
+                duck.Fill = img;
             }
             else if (direction == 2)
             {
                 //duck.Fill = //duck facing SE
+                BitmapImage bitmapImage = new BitmapImage(new Uri("DuckLeft.png", UriKind.Relative));
+                ImageBrush img = new ImageBrush(bitmapImage);
+                duck.Fill = img;
             }
             else if (direction == 3)
             {
                 //duck.Fill = //duck facing SW
+                BitmapImage bitmapImage = new BitmapImage(new Uri("DuckRight.png", UriKind.Relative));
+                ImageBrush img = new ImageBrush(bitmapImage);
+                duck.Fill = img;
             }
         }
     }
