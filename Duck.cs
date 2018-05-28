@@ -28,7 +28,7 @@ namespace Duck_Hunt_2._0
         public bool movingUp = true;
         public bool isDuck = false;
         public int shots;
-
+        public int DucksKilled;
 
         public void Spawn(Canvas canvas)
         {
@@ -122,7 +122,7 @@ namespace Duck_Hunt_2._0
             {
                canvas.Children.Remove(duck);
                isDuck = false;
-                
+               DucksKilled += 1;
             }
             else
             {
