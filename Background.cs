@@ -42,7 +42,15 @@ namespace Duck_Hunt_2._0
             bulletDisplay.Width = 80;
             Canvas.SetBottom(bulletDisplay, 10);
             canvas.Children.Add(bulletDisplay);
-
+            
+            scorebox = new Label();
+            scorebox.Width = 80;
+            scorebox.Height = 40;
+            Canvas.SetBottom(scorebox, 20);
+            Canvas.SetLeft(scorebox, 900);
+            scorebox.FontSize = 20;
+            //scorebox.FontStyle;
+            canvas.Children.Add(scorebox);
             
             canvas.UpdateLayout();
 
