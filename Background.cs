@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,22 +21,28 @@ namespace Duck_Hunt_2._0
         public Cursor crossHair;
         public Rectangle bulletDisplay;
         public Label scorebox;
-        
+        Rectangle background = new Rectangle();
+
         public Background(Canvas canvas)
         {
             FileStream fileStream;///set cursor
             fileStream = new FileStream("Crosshair.cur", FileMode.Open);
             crossHair = new Cursor(fileStream);
 
-
-            Rectangle background = new Rectangle();
             background.Height = 800;
             background.Width = 1000;
+            BitmapImage bitmapSplash = new BitmapImage(new Uri("Splash.png", UriKind.Relative));
+            ImageBrush splashBrush = new ImageBrush(bitmapSplash);
+            background.Fill = splashBrush;
+            canvas.Children.Add(background);
+        }
+
+        public void Start(Canvas canvas)
+        {
 
             BitmapImage bitmapBackground = new BitmapImage(new Uri("Background.png", UriKind.Relative));
             ImageBrush backgroundBrush = new ImageBrush(bitmapBackground);
             background.Fill = backgroundBrush;
-            canvas.Children.Add(background);
             
             bulletDisplay = new Rectangle();
             bulletDisplay.Height = 50;
@@ -54,7 +60,12 @@ namespace Duck_Hunt_2._0
             canvas.Children.Add(scorebox);
             
             canvas.UpdateLayout();
-
+        }
+        public void GameOver (Canvas canvas)
+        {
+            BitmapImage bitmapSplash = new BitmapImage(new Uri("Splash.png", UriKind.Relative));
+            ImageBrush splashBrush = new ImageBrush(bitmapSplash);
+            background.Fill = splashBrush;
         }
     }
 }
