@@ -50,6 +50,7 @@ namespace Duck_Hunt_2._0
             pos_y = 599;
             isDuck = true;
 
+            shots = 0;
         }
 
         public void Move(int counter)
