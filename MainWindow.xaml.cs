@@ -26,6 +26,7 @@ namespace Duck_Hunt_2._0
         System.Windows.Threading.DispatcherTimer gameTimer = new System.Windows.Threading.DispatcherTimer();
         Background background;
         int counter = 0;
+        int Lives = 3;
         double Shot_X;
         double Shot_Y;
 
@@ -60,21 +61,11 @@ namespace Duck_Hunt_2._0
 
             if (player.MouseClicked())
             {
-                if (duck.shots >= 3)
-                {
-                    MessageBox.Show("out of ammo");
-                    Canvas.Children.Remove(duck.duck);
-                    duck.isDuck = false;
-
-                }
-                else
-                {
-                    ///this.Title = Mouse.GetPosition(this).ToString();
-                    ///Console.WriteLine(Mouse.GetPosition(this).ToString());
-                    Shot_X = Mouse.GetPosition(this).X + 25;
-                    Shot_Y = Mouse.GetPosition(this).Y + 25;
-                    duck.Kill(Shot_X, Shot_Y, Canvas, counter);
-                }
+                ///this.Title = Mouse.GetPosition(this).ToString();
+                ///Console.WriteLine(Mouse.GetPosition(this).ToString());
+                Shot_X = Mouse.GetPosition(this).X + 25;
+                Shot_Y = Mouse.GetPosition(this).Y + 25;
+                duck.Kill(Shot_X, Shot_Y, Canvas, counter);
             }
 
             //else { this.Title = "no click"; } /// debug crap
@@ -88,12 +79,20 @@ namespace Duck_Hunt_2._0
             }///change shots remaining graphic
             if (duck.shots == 1)
             {
+                if (duck.isDuck == false)
+                {
+                    duck.shots = 0;
+                }
                 BitmapImage TwoShots = new BitmapImage(new Uri("Two Shots.png", UriKind.Relative));
                 ImageBrush Two = new ImageBrush(TwoShots);
                 background.bulletDisplay.Fill = Two;
             }
             if (duck.shots == 2)
             {
+                if (duck.isDuck == false)
+                {
+                    duck.shots = 0;
+                }
                 BitmapImage OneShot = new BitmapImage(new Uri("One Shot.png", UriKind.Relative));
                 ImageBrush One = new ImageBrush(OneShot);
                 background.bulletDisplay.Fill = One;
@@ -103,6 +102,22 @@ namespace Duck_Hunt_2._0
                 BitmapImage NoShot = new BitmapImage(new Uri("No Shots.png", UriKind.Relative));
                 ImageBrush None = new ImageBrush(NoShot);
                 background.bulletDisplay.Fill = None;
+                
+                Lives--;
+                if (Lives == 0)
+                {
+                    duck.isDuck = true;
+                    Canvas.Children.Remove(duck.duck);
+                    MessageBox.Show("GameOver");
+                    
+                }
+                else if (Lives > 0)
+                {
+                    MessageBox.Show("out of ammo");
+                    Canvas.Children.Remove(duck.duck);
+                    duck.isDuck = false;
+                    duck.shots = 0;
+                }
             }
 
             duck.Move(counter);/// update duck
