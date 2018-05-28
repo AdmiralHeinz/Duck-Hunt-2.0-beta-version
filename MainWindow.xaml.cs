@@ -106,6 +106,7 @@ namespace Duck_Hunt_2._0
             }
 
             duck.Move(counter);/// update duck
+            background.scorebox.Content = (duck.DucksKilled*100).ToString();
 
 
             counter++;/// update counter
