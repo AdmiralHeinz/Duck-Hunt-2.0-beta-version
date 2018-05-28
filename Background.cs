@@ -20,6 +20,7 @@ namespace Duck_Hunt_2._0
     {
         public Cursor crossHair;
         public Rectangle bulletDisplay;
+        public Label scorebox;
         
         public Background(Canvas canvas)
         {
