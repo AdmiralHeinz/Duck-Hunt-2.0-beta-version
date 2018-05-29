@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,29 +19,53 @@ namespace Duck_Hunt_2._0
     class Background
     {
         public Cursor crossHair;
+        public Rectangle bulletDisplay;
+        public Label scorebox;
+        Rectangle background = new Rectangle();
+
         public Background(Canvas canvas)
         {
             FileStream fileStream;///set cursor
             fileStream = new FileStream("Crosshair.cur", FileMode.Open);
             crossHair = new Cursor(fileStream);
 
-
-            Rectangle background = new Rectangle();
             background.Height = 800;
             background.Width = 1000;
+            BitmapImage bitmapSplash = new BitmapImage(new Uri("Splash.png", UriKind.Relative));
+            ImageBrush splashBrush = new ImageBrush(bitmapSplash);
+            background.Fill = splashBrush;
+            canvas.Children.Add(background);
+        }
+
+        public void Start(Canvas canvas)
+        {
 
             BitmapImage bitmapBackground = new BitmapImage(new Uri("Background.png", UriKind.Relative));
             ImageBrush backgroundBrush = new ImageBrush(bitmapBackground);
             background.Fill = backgroundBrush;
-
-            canvas.Children.Add(background);
+            
+            bulletDisplay = new Rectangle();
+            bulletDisplay.Height = 50;
+            bulletDisplay.Width = 80;
+            Canvas.SetBottom(bulletDisplay, 10);
+            canvas.Children.Add(bulletDisplay);
+            
+            scorebox = new Label();
+            scorebox.Width = 80;
+            scorebox.Height = 40;
+            Canvas.SetBottom(scorebox, 20);
+            Canvas.SetLeft(scorebox, 900);
+            scorebox.FontSize = 20;
+            //scorebox.FontStyle;
+            canvas.Children.Add(scorebox);
+            
             canvas.UpdateLayout();
-
-            //start music
-            ///MediaPlayer musicPlayer = new MediaPlayer();
-            //musicPlayer.Open(new Uri("tapperSong.mp3", UriKind.Relative));
-            //musicPlayer.Play();
-
+        }
+        public void GameOver (Canvas canvas)
+        {
+            BitmapImage bitmapSplash = new BitmapImage(new Uri("Splash.png", UriKind.Relative));
+            ImageBrush splashBrush = new ImageBrush(bitmapSplash);
+            background.Fill = splashBrush;
         }
     }
 }

@@ -30,7 +30,7 @@ namespace Duck_Hunt_2._0
         public bool movingUp = true;
         public bool isDuck = false;
         public int shots;
-
+        public int DucksKilled;
 
         public void Spawn(Canvas canvas)
         {
@@ -52,6 +52,7 @@ namespace Duck_Hunt_2._0
             pos_y = 599;
             isDuck = true;
 
+            shots = 0;
         }
 
         public void Move(int counter)
@@ -125,11 +126,19 @@ namespace Duck_Hunt_2._0
                canvas.Children.Remove(duck);
                isDuck = false;
                DucksKilled += 1;
+              
+               if (DucksKilled == 7)
+               {
+                   MessageBox.Show("All Ducks Gone");
+                   canvas.Children.Remove(duck);
+                   isDuck = true;
+               }
+
             }
             else
             {
                 shots += 1;
-                MessageBox.Show(shots.ToString());
+                //MessageBox.Show(shots.ToString());
             }
             
             Points = DucksKilled * 100;
