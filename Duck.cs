@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -117,19 +117,18 @@ namespace Duck_Hunt_2._0
             RandomChangeDirection();
         }
 
-        public void Kill(double Shot_x, double Shot_Y, Canvas canvas, int counter)
+        public void Kill (double Shot_x, double Shot_Y, Canvas canvas, int counter)
         {
             if (Shot_x >= pos_x & Shot_x <= pos_x + 100 & Shot_Y >= pos_y & Shot_Y <= pos_y + 100)
             {
                canvas.Children.Remove(duck);
                isDuck = false;
                DucksKilled += 1;
-               if (DucksKilled == 7)
+               /*if (DucksKilled == 7)
                {
                    MessageBox.Show("All Ducks Gone");
                    canvas.Children.Remove(duck);
-                   isDuck = true;
-               }
+               }*/
             }
             else
             {
