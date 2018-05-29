@@ -66,6 +66,8 @@ namespace Duck_Hunt_2._0
             BitmapImage bitmapSplash = new BitmapImage(new Uri("Splash.png", UriKind.Relative));
             ImageBrush splashBrush = new ImageBrush(bitmapSplash);
             background.Fill = splashBrush;
+            canvas.Children.Remove(scorebox);
+            canvas.Children.Remove(bulletDisplay);
         }
     }
 }
