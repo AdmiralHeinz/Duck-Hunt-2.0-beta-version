@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
+public int DucksKilled;
+public int Points;
 
 namespace Duck_Hunt_2._0
 {
@@ -124,18 +126,22 @@ namespace Duck_Hunt_2._0
                canvas.Children.Remove(duck);
                isDuck = false;
                DucksKilled += 1;
+              
                if (DucksKilled == 7)
                {
                    MessageBox.Show("All Ducks Gone");
                    canvas.Children.Remove(duck);
                    isDuck = true;
                }
+
             }
             else
             {
                 shots += 1;
                 //MessageBox.Show(shots.ToString());
             }
+            
+            Points = DucksKilled * 100;
         }
 
         public void RandomChangeDirection()
