@@ -125,6 +125,33 @@ namespace Duck_Hunt_2._0
                         duck.shots = 0;
                     }
                 }
+                
+                if (Lives == 3) ///change Lives remaining graphic
+                {
+                    BitmapImage ThreeShots = new BitmapImage(new Uri("Three Lives.png", UriKind.Relative));
+                    ImageBrush Three = new ImageBrush(ThreeShots);
+                    background.bulletDisplay.Fill = Three;
+                }
+                if (Lives == 2)
+                {
+                    BitmapImage TwoShots = new BitmapImage(new Uri("Two Lives.png", UriKind.Relative));
+                    ImageBrush Two = new ImageBrush(TwoShots);
+                    background.bulletDisplay.Fill = Two;
+                }
+
+                if (Lives == 1)
+                {
+                    BitmapImage OneShot = new BitmapImage(new Uri("One Live.png", UriKind.Relative));
+                    ImageBrush One = new ImageBrush(OneShot);
+                    background.bulletDisplay.Fill = One;
+                }
+                if (Lives == 0)
+                {
+                    BitmapImage NoShot = new BitmapImage(new Uri("No Lives.png", UriKind.Relative));
+                    ImageBrush None = new ImageBrush(NoShot);
+                    background.bulletDisplay.Fill = None;
+                }
+                
                 duck.Move(counter);/// update duck
                 background.scorebox.Content = (duck.DucksKilled * 100).ToString();
             }
