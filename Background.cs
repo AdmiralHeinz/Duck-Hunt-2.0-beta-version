@@ -20,6 +20,7 @@ namespace Duck_Hunt_2._0
     {
         public Cursor crossHair;
         public Rectangle bulletDisplay;
+        public Rectangle livesDisplay;
         public Label scorebox;
         Rectangle background = new Rectangle();
 
@@ -49,6 +50,14 @@ namespace Duck_Hunt_2._0
             bulletDisplay.Width = 80;
             Canvas.SetBottom(bulletDisplay, 10);
             canvas.Children.Add(bulletDisplay);
+            
+            //creating displays for lives
+            livesDisplay = new Rectangle();
+            livesDisplay.Height = 50;
+            livesDisplay.Width = 120;
+            Canvas.SetBottom(livesDisplay, 10);
+            Canvas.SetLeft(livesDisplay, 440);
+            canvas.Children.Add(livesDisplay);
             
             scorebox = new Label();
             scorebox.Width = 80;
